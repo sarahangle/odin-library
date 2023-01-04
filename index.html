@@ -8,7 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="Big-title">My Book Library</div>
+    <div id="big-title">My Reading List</div>
+    <div class="bookshelf">
+        <div id="add-book-row">
+            <button id="add-book">+ Add a Book</button>
+            <div id="empty"></div>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-card">
+            <form action="return formSubmit(this)">
+                <div class="title">Book Details:</div>
+                <input type="text" id="title" name="title" placeholder="Title">
+                <input type="text" id="author" name="author" placeholder="Author">
+                <input type="number" id="pages" name="pages" placeholder="Pages">
+                <div class="toggle-container">
+                    <span>Read it?</span>
+                    <label class="toggle">
+                        <input class="toggle-input" type="checkbox" id="has-read" name="has-read">
+                        <span class="toggle-labels" data-on="Yes" data-off="Nope"></span>
+                        <span class="toggle-handle"></span>
+                    </label>
+                </div>
+                <input type="submit" value="Create Book">
+            </form>
+        </div>
+    </div>
 </body>
 <script src="script.js"></script>
 </html>
