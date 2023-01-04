@@ -1,5 +1,4 @@
 // FIXME: Delete does not aactually delete from library dictionary
-// TODO: Need to properly set hasRead based on toggle
 // TODO: Need to update hasRead based on toggle
 // FIXME: Form autofills with last done content
 /* eslint-disable no-use-before-define */
@@ -89,10 +88,10 @@ form.addEventListener('submit', handleForm);
 
 // eslint-disable-next-line no-unused-vars
 function formSubmit() {
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const numPages = document.getElementById('pages').value;
-  const hasRead = document.getElementById('has-read').value;
+  const title = document.querySelector('form #title').value;
+  const author = document.querySelector('form #author').value;
+  const numPages = document.querySelector('form #pages').value;
+  const hasRead = document.querySelector('form #has-read').checked === true;
   addNewBook(title, author, numPages, hasRead);
   modal.style.display = 'none';
 }
@@ -119,8 +118,8 @@ function addNewBook(title, author, numPages, hasRead) {
   bookRead.classList.add('toggle-container');
   bookRead.innerHTML = '<span>Read it?</span>'
                      + '<label class="toggle">'
-                     + '<input class="toggle-input" type="checkbox" id="has-read" name="has-read">'
-                     + '<span class="toggle-labels" data-on="Yup" data-off="Nope"></span>'
+                     + '<input class="toggle-input" type="checkbox" id="has-read" name="has-read"'
+                     + '><span class="toggle-labels" data-on="Yup" data-off="Nope"></span>'
                      + '<span class="toggle-handle"></span>'
                      + '</label>';
   bookRead.setAttribute('onclick', 'return readBook(this)');
@@ -131,9 +130,14 @@ function addNewBook(title, author, numPages, hasRead) {
   bookDelete.innerHTML = 'Delete Book';
   bookCard.appendChild(bookDelete);
 
+  // Check read if needed
+  const bookReadCheckbox = bookCard.querySelector('#has-read');
+  if (hasRead === true) { bookReadCheckbox.checked = true; }
+
   // Insert book card into DOM
   const bookshelf = document.querySelector('.bookshelf');
   bookshelf.appendChild(bookCard);
+
   printMyLibrary();
 }
 
