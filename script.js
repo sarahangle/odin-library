@@ -1,5 +1,4 @@
-// FIXME: Delete does not aactually delete from library dictionary
-// TODO: Need to update hasRead based on toggle
+// FIXME: Delete does not actually delete from library dictionary
 // FIXME: Form autofills with last done content
 /* eslint-disable no-use-before-define */
 // Library Logic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,7 +121,7 @@ function addNewBook(title, author, numPages, hasRead) {
                      + '><span class="toggle-labels" data-on="Yup" data-off="Nope"></span>'
                      + '<span class="toggle-handle"></span>'
                      + '</label>';
-  bookRead.setAttribute('onclick', 'return readBook(this)');
+  bookRead.setAttribute('onchange', 'return readBook(this)');
   bookCard.appendChild(bookRead);
   const bookDelete = document.createElement('button');
   bookDelete.classList.add('delete');
@@ -152,6 +151,7 @@ function deleteBook(element) {
 }
 
 // Switches book element from read to not read, or vise versa
+// eslint-disable-next-line no-unused-vars
 function readBook(element) {
   const bookElement = element.parentElement;
   const bookID = bookElement.dataset.idNum;
