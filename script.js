@@ -1,4 +1,3 @@
-// FIXME: Delete does not actually delete from library dictionary
 // FIXME: Form autofills with last done content
 /* eslint-disable no-use-before-define */
 // Library Logic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,7 +50,7 @@ function addToLibrary(title, author, numPages, hasRead) {
 // If book is in the library, deletes it.
 // If not in the library, do nothing.
 function deleteFromLibrary(idNum) {
-  if (idNum in myLibrary) { delete myLibrary.idNum; }
+  if (idNum in myLibrary) { delete myLibrary[idNum]; }
 }
 
 // If book is in the library, change read status (true -> false, false -> true).
