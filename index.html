@@ -14,10 +14,23 @@
             <button id="add-book">+ Add a Book</button>
             <div id="empty"></div>
         </div>
+        <!-- <div class="book-card" data-id-num="-1462237332">
+            <div class="name">Harry Potter by J.K. Rowling</div>
+            <div class="pages">342 pages</div>
+            <div class="toggle-container">
+                <span>Read it?</span>
+                <label class="toggle">
+                    <input class="toggle-input" type="checkbox" id="has-read" name="has-read">
+                    <span class="toggle-labels" data-on="Yup" data-off="Nope"></span>
+                    <span class="toggle-handle"></span>
+                </label>
+            </div>
+            <button class="delete" onclick="return deleteBook(this)">Delete Book</button>
+        </div> -->
     </div>
     <div class="modal">
         <div class="modal-card">
-            <form action="return formSubmit(this)">
+            <form>
                 <div class="title">Book Details:</div>
                 <input type="text" id="title" name="title" placeholder="Title">
                 <input type="text" id="author" name="author" placeholder="Author">
@@ -26,11 +39,11 @@
                     <span>Read it?</span>
                     <label class="toggle">
                         <input class="toggle-input" type="checkbox" id="has-read" name="has-read">
-                        <span class="toggle-labels" data-on="Yes" data-off="Nope"></span>
+                        <span class="toggle-labels" data-on="Yup" data-off="Nope"></span>
                         <span class="toggle-handle"></span>
                     </label>
                 </div>
-                <input type="submit" value="Create Book">
+                <input type="submit" value="Create Book" onclick="return formSubmit()">
             </form>
         </div>
     </div>
