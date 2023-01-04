@@ -1,4 +1,3 @@
-// FIXME: Form autofills with last done content
 /* eslint-disable no-use-before-define */
 // Library Logic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const myLibrary = {};
@@ -91,6 +90,10 @@ function formSubmit() {
   const numPages = document.querySelector('form #pages').value;
   const hasRead = document.querySelector('form #has-read').checked === true;
   addNewBook(title, author, numPages, hasRead);
+  document.querySelector('form #title').value = '';
+  document.querySelector('form #author').value = '';
+  document.querySelector('form #pages').value = '';
+  document.querySelector('form #has-read').checked = false;
   modal.style.display = 'none';
 }
 
