@@ -85,16 +85,33 @@ form.addEventListener('submit', handleForm);
 
 // eslint-disable-next-line no-unused-vars
 function formSubmit() {
-  const title = document.querySelector('form #title').value;
-  const author = document.querySelector('form #author').value;
-  const numPages = document.querySelector('form #pages').value;
-  const hasRead = document.querySelector('form #has-read').checked === true;
-  addNewBook(title, author, numPages, hasRead);
-  document.querySelector('form #title').value = '';
-  document.querySelector('form #author').value = '';
-  document.querySelector('form #pages').value = '';
-  document.querySelector('form #has-read').checked = false;
-  modal.style.display = 'none';
+  const titleNode = document.querySelector('form #title');
+  const authorNode = document.querySelector('form #author');
+  const numPagesNode = document.querySelector('form #pages');
+  if (titleNode.validity.valueMissing) {
+    titleNode.setCustomValidity('Need a title!');
+  } else if (authorNode.validity.valueMissing) {
+    titleNode.setCustomValidity('');
+    authorNode.setCustomValidity('I need an author!');
+  } else if (numPagesNode.validity.valueMissing) {
+    titleNode.setCustomValidity('');
+    authorNode.setCustomValidity('');
+    numPagesNode.setCustomValidity('How many pages was the book?');
+  } else {
+    titleNode.setCustomValidity('');
+    authorNode.setCustomValidity('');
+    numPagesNode.setCustomValidity('');
+    const title = document.querySelector('form #title').value;
+    const author = document.querySelector('form #author').value;
+    const numPages = document.querySelector('form #pages').value;
+    const hasRead = document.querySelector('form #has-read').checked === true;
+    addNewBook(title, author, numPages, hasRead);
+    document.querySelector('form #title').value = '';
+    document.querySelector('form #author').value = '';
+    document.querySelector('form #pages').value = '';
+    document.querySelector('form #has-read').checked = false;
+    modal.style.display = 'none';
+  }
 }
 
 // CREATE BOOK ELEMENTS
